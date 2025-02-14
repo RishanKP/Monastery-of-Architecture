@@ -30,6 +30,10 @@ app.get("/messages", async (req, res) => {
 });
 
 app.post("/messages", async (req, res) => {
+	if (req.body.data != "") {
+		res.status(400).send()
+	}
+
   const mailData = {
     from: process.env.FROM_EMAIL,
     to: process.env.TO_EMAIL,
